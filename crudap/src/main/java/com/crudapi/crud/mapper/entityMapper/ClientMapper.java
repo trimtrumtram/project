@@ -11,5 +11,6 @@ public interface ClientMapper {
     @Mapping(target = "id", source = "id")
     ClientResponseDTO mapToDTO(Client client);
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "orders", ignore = true)
     Client mapToEntity(CreateClientDTO dto);
 }
