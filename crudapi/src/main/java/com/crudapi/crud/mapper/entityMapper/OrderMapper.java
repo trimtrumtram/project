@@ -14,7 +14,6 @@ public interface OrderMapper {
     @Mapping(source = "client.id", target = "clientId")
     OrderResponseDTO mapToDTO(Order order);
 
-    @Mapping(target = "id", ignore = true)
     @Mapping(source = "clientId", target = "client", qualifiedByName = "mapClient")
     Order mapToEntity(CreateOrderDTO dto);
 
