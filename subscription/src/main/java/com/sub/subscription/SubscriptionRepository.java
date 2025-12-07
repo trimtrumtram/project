@@ -15,5 +15,5 @@ public interface SubscriptionRepository extends JpaRepository<Subscription, Long
     List<Subscription> findByClientId(long clientId);
     List<Subscription> findByProductIdAndEventType(long productId, EventType eventType);
     
-    boolean existsSubscription(Long clientId, Long productId, EventType eventType);
+    boolean existsByClientIdAndProductIdAndEventType(Long clientId, Long productId, EventType eventType);
 }

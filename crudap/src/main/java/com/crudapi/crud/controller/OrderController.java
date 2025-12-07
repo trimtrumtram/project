@@ -113,7 +113,7 @@ public class OrderController {
             @RequestParam(required = false) String statusFilter,
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size,
-            @RequestParam(defaultValue = "name") OrderSortField sortBy,
+            @RequestParam(defaultValue = "CREATION_DATE_TIME") OrderSortField sortBy,
             @RequestParam(defaultValue = "ASC") SortDirection sortDirection)
     {
         OrderFilterDTO filter = orderFilterMapper.toDTO(

@@ -41,7 +41,7 @@ public class SubscriptionService {
             throw new RuntimeException("Product not found");
         };
 
-        if(repo.existsSubscription(dto.getClientId(),  dto.getProductId(), dto.getEventType())) {
+        if(repo.existsByClientIdAndProductIdAndEventType(dto.getClientId(),  dto.getProductId(), dto.getEventType())) {
             throw new RuntimeException("Subscription already exists");
         }
 
