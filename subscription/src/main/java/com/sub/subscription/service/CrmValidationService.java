@@ -20,7 +20,7 @@ public class CrmValidationService {
     public boolean clientExists(Long clientId) {
         try {
             webClient.get()
-                    .uri("/clients/{id}", clientId)
+                    .uri("/client/{id}", clientId)
                     .retrieve()
                     .toBodilessEntity()
                     .block();
@@ -36,7 +36,7 @@ public class CrmValidationService {
     public boolean productExists(Long productId) {
         try {
             webClient.get()
-                    .uri("/products/{id}", productId)
+                    .uri("/product/{id}", productId)
                     .retrieve()
                     .toBodilessEntity()
                     .block();

@@ -11,9 +11,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class KafkaProducer {
 
-    private final KafkaTemplate<String, Object> temp;
+    private final KafkaTemplate<String, String> temp;
 
     public void sendNotification(SubscriptionResponseDTO dto) {
-        temp.send("notification-topic", dto);
+        try {
+            String message = String.format("New subscription created: Client %d subscribed to product %d for event %s",
+                    dto.getClientId(), dto.getProductId(), dto.getEventType());
+            temp.send("notification-topic", message);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to send notification", e);
+        }
     }
 }

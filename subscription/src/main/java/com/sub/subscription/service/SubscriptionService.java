@@ -36,10 +36,10 @@ public class SubscriptionService {
 
         if(!crm.clientExists(dto.getClientId())) {
             throw new RuntimeException("Client not found");
-        };
+        }
         if(!crm.productExists(dto.getProductId())) {
             throw new RuntimeException("Product not found");
-        };
+        }
 
         if(repo.existsByClientIdAndProductIdAndEventType(dto.getClientId(),  dto.getProductId(), dto.getEventType())) {
             throw new RuntimeException("Subscription already exists");
@@ -50,7 +50,7 @@ public class SubscriptionService {
 
         SubscriptionResponseDTO saved = mapper.toDto(repo.save(subscription));
         producer.sendNotification(saved);
-                    
+
         return saved;
     }
 

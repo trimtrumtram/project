@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "Clients", description = "Clients controller")
+@Tag(name = "Client", description = "Client controller")
 public class ClientController {
 
     private final ClientService clientService;
