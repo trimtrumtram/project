@@ -14,6 +14,7 @@ import com.sub.subscription.SubscriptionRepository;
 import com.sub.subscription.config.KafkaProducer;
 import com.sub.subscription.dto.SubscriptionCreateDTO;
 import com.sub.subscription.dto.SubscriptionResponseDTO;
+import com.sub.subscription.dto.SubscriptionUpdateDTO;
 
 @Service
 public class SubscriptionService {
@@ -72,5 +73,25 @@ public class SubscriptionService {
                 .stream()
                 .map(mapper::toDto)
                 .toList();
+    }
+
+    @Transactional
+    public SubscriptionResponseDTO updateSubscription(Long id, SubscriptionUpdateDTO dto) {
+        Subscription subscription = repo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Subscription not found"));
+
+        if(!crm.clientExists(dto.getClientId())) {
+            throw new RuntimeException("Client not found");
+        }
+        if(!crm.productExists(dto.getProductId())) {
+            throw new RuntimeException("Product not found");
+        }
+
+        mapper.updateSubscriptionFromDto(dto, subscription);
+        Subscription saved = repo.save(subscription);
+        SubscriptionResponseDTO response = mapper.toDto(saved);
+        producer.sendNotification(response);
+
+        return response;
     }
 }
