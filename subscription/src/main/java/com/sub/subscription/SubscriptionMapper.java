@@ -16,6 +16,8 @@ public interface SubscriptionMapper {
     @Mapping(target = "createdAt", ignore = true)
     Subscription toEntity(SubscriptionCreateDTO dto);
 
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "createdAt", source = "createdAt")
     SubscriptionResponseDTO toDto(Subscription subscription);
 
     void updateSubscriptionFromDto(SubscriptionUpdateDTO dto, @MappingTarget Subscription subscription);

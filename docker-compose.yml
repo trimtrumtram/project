@@ -19,6 +19,7 @@ services:
       JWT_SECRET: jwt_secret
       JWT_EXPIRATION: 360000
       SERVER_PORT: 8080
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
     depends_on:
       crud-db:
         condition: service_healthy

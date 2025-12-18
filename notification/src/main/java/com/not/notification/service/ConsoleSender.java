@@ -15,6 +15,6 @@ public class ConsoleSender implements NotificationSender{
 
     @Override
     public void send(NotificationRequest req) {
-        System.out.println("Sending notification");
+        System.out.println("Notification to " + req.getRecipient() + ": " + req.getBody());
     }
 }
