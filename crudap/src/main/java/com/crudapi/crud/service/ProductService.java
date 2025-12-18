@@ -1,5 +1,7 @@
 package com.crudapi.crud.service;
 
+import com.crudapi.crud.config.KafkaProducer;
+import com.crudapi.crud.dto.ProductChangeEvent;
 import com.crudapi.crud.dto.product.CreateProductDTO;
 import com.crudapi.crud.dto.product.ProductFilterDTO;
 import com.crudapi.crud.dto.product.ProductResponseDTO;
@@ -19,6 +21,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Slf4j
 @Service
 public class ProductService {
@@ -26,11 +31,13 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
     private final OrderRepository orderRepository;
+    private final KafkaProducer kafkaProducer;
 
-    public ProductService(ProductRepository productRepository, ProductMapper productMapper, OrderRepository orderRepository) {
+    public ProductService(ProductRepository productRepository, ProductMapper productMapper, OrderRepository orderRepository, KafkaProducer kafkaProducer) {
         this.productRepository = productRepository;
         this.productMapper = productMapper;
         this.orderRepository = orderRepository;
+        this.kafkaProducer = kafkaProducer;
     }
 
     public ProductResponseDTO addProductToOrder(Long orderId, long productId) {
@@ -67,8 +74,9 @@ public class ProductService {
     }
 
     public ProductResponseDTO updateProduct(Long id, UpdateProductDTO dto) {
+        System.out.println("updateProduct called with id=" + id + ", dto=" + dto);
         log.info("Обновление продукта id={}", id);
-        log.debug("Детали UpdateProductDTO: {}", dto);
+        log.info("Детали UpdateProductDTO: {}", dto);
 
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> {
@@ -76,12 +84,40 @@ public class ProductService {
                     return new RuntimeException("Product not found");
                 });
 
+        // Detect changes
+        List<String> eventTypes = new ArrayList<>();
+        log.info("Detecting changes for product {}", id);
+        log.info("Old price: {}, new price: {}", product.getPrice(), dto.getPrice());
+        if (product.getPrice().compareTo(dto.getPrice()) != 0) {
+            eventTypes.add("PRICE_CHANGE");
+        }
+        log.info("Old name: {}, new name: {}", product.getName(), dto.getName());
+        if (!product.getName().equals(dto.getName())) {
+            eventTypes.add("NEW_VERSION");
+        }
+        log.info("Old desc: {}, new desc: {}", product.getDescription(), dto.getDescription());
+        if (!product.getDescription().equals(dto.getDescription())) {
+            eventTypes.add("STOCK_UPDATE");
+        }
+        log.info("Event types detected: {}", eventTypes);
+
         product.setName(dto.getName());
         product.setDescription(dto.getDescription());
         product.setPrice(dto.getPrice());
 
         Product updatedProduct = productRepository.save(product);
         log.info("Продукт успешно обновлён: id={}", updatedProduct.getId());
+
+        // Send Kafka event if there are changes
+        if (!eventTypes.isEmpty()) {
+            ProductChangeEvent event = new ProductChangeEvent(updatedProduct.getId(), eventTypes);
+            try {
+                kafkaProducer.sendProductChangeEvent(event);
+                log.info("Отправлено событие изменения продукта: {}", event);
+            } catch (Exception e) {
+                log.error("Failed to send Kafka event: {}", e.getMessage(), e);
+            }
+        }
 
         return productMapper.mapToDTO(updatedProduct);
     }

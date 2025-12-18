@@ -15,6 +15,7 @@ import com.sub.subscription.config.KafkaProducer;
 import com.sub.subscription.dto.SubscriptionCreateDTO;
 import com.sub.subscription.dto.SubscriptionResponseDTO;
 import com.sub.subscription.dto.SubscriptionUpdateDTO;
+import com.sub.subscription.model.EventType;
 
 @Service
 public class SubscriptionService {
@@ -73,6 +74,10 @@ public class SubscriptionService {
                 .stream()
                 .map(mapper::toDto)
                 .toList();
+    }
+
+    public List<Subscription> getSubscriptionsByProductIdAndEventType(Long productId, EventType eventType) {
+        return repo.findByProductIdAndEventType(productId, eventType);
     }
 
     @Transactional
