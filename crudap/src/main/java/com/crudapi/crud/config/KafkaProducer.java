@@ -11,11 +11,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class KafkaProducer {
 
-    private final KafkaTemplate<String, ProductChangeEvent> kafkaTemplate;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendProductChangeEvent(ProductChangeEvent event) {
         try {
-            kafkaTemplate.send("product-events", event);
+            String message = event.getProductId() + ":" + String.join(",", event.getEventTypes());
+            kafkaTemplate.send("product-events", message);
         } catch (Exception e) {
             throw new RuntimeException("Failed to send product change event", e);
         }

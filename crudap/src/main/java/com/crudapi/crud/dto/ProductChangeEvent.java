@@ -11,5 +11,5 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductChangeEvent {
     private Long productId;
-    private List<String> eventTypes; // e.g., "PRICE_CHANGE", "STOCK_UPDATE"
+    private List<String> eventTypes;
 }

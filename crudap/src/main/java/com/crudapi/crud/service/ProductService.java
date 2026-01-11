@@ -84,7 +84,6 @@ public class ProductService {
                     return new RuntimeException("Product not found");
                 });
 
-        // Detect changes
         List<String> eventTypes = new ArrayList<>();
         log.info("Detecting changes for product {}", id);
         log.info("Old price: {}, new price: {}", product.getPrice(), dto.getPrice());
@@ -108,7 +107,6 @@ public class ProductService {
         Product updatedProduct = productRepository.save(product);
         log.info("Продукт успешно обновлён: id={}", updatedProduct.getId());
 
-        // Send Kafka event if there are changes
         if (!eventTypes.isEmpty()) {
             ProductChangeEvent event = new ProductChangeEvent(updatedProduct.getId(), eventTypes);
             try {
