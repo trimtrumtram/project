@@ -76,7 +76,7 @@ public class OrderService {
         log.info("Заказ id={} успешно удалён", id);
     }
 
-    public OrderResponseDTO getOrder(Long id) {
+    public OrderResponseDTO findById(Long id) {
         log.info("Получение заказа по id={}", id);
 
         return orderRepository.findById(id)
@@ -90,7 +90,7 @@ public class OrderService {
                 });
     }
 
-    public Page<OrderResponseDTO> getOrders(OrderFilterDTO filter) {
+    public Page<OrderResponseDTO> getAllOrders(OrderFilterDTO filter) {
         log.info("Получение списка заказов с фильтром: {}", filter);
         try {
             OrderSortField sortField = filter.getSortField() != null ? filter.getSortField() : OrderSortField.CREATION_DATE_TIME;

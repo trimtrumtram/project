@@ -10,6 +10,7 @@ import com.crudapi.crud.mapper.filterMapper.ProductFilterMapper;
 import com.crudapi.crud.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -19,38 +20,42 @@ import java.math.BigDecimal;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/products")
 public class ProductController {
 
     private final ProductService productService;
     private final ProductFilterMapper productFilterMapper;
+    private ProductResponseDTO productDto;
 
-    @PostMapping("/product")
+    @PostMapping
     @Operation(
             summary = "Create a new product",
             description = "Creating a new product",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Product created successfully"),
+                    @ApiResponse(responseCode = "201", description = "Product created successfully"),
                     @ApiResponse(responseCode = "400", description = "Product is not created")
             }
     )
-    public ProductResponseDTO createProduct(@RequestBody CreateProductDTO dto) {
-        return productService.createProduct(dto);
+    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody @Valid CreateProductDTO dto) {
+        productDto = productService.createProduct(dto);
+        return ResponseEntity.ok(productDto);
     }
 
-    @PutMapping("product/{id}")
+    @PutMapping("/{id}")
     @Operation(
             summary = "Update an existing product",
             description = "Updating an existing product",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Product updated successfully"),
+                    @ApiResponse(responseCode = "201", description = "Product updated successfully"),
                     @ApiResponse(responseCode = "400", description = "Product is not updated")
             }
     )
-    public ProductResponseDTO updateProduct(@PathVariable Long id, @RequestBody UpdateProductDTO dto) {
-        return productService.updateProduct(id, dto);
+    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable Long id, @RequestBody @Valid UpdateProductDTO dto) {
+        productDto = productService.updateProduct(id, dto);
+        return ResponseEntity.ok(productDto);
     }
 
-    @DeleteMapping("/product/{id}")
+    @DeleteMapping("/{id}")
     @Operation(
             summary = "Delete an existing product",
             description = "Deleting an existing product",
@@ -64,26 +69,27 @@ public class ProductController {
         return true;
     }
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/{id}")
     @Operation(
             summary = "Get a product by id",
             description = "Getting a product by id",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Product found successfully"),
-                    @ApiResponse(responseCode = "400", description = "Product not found")
+                    @ApiResponse(responseCode = "404", description = "Product not found")
             }
     )
-    public ProductResponseDTO getProduct(@PathVariable Long id) {
-        return productService.findById(id);
+    public ResponseEntity<ProductResponseDTO> getProduct(@PathVariable Long id) {
+        productDto = productService.findById(id);
+        return ResponseEntity.ok(productDto);
     }
 
-    @GetMapping("/product")
+    @GetMapping
     @Operation(
             summary = "Get all products",
             description = "Getting all products",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Products found successfully"),
-                    @ApiResponse(responseCode = "200", description = "Products not found")
+                    @ApiResponse(responseCode = "404", description = "Products not found")
             }
     )
     public ResponseEntity<Page<ProductResponseDTO>> getAllProducts(

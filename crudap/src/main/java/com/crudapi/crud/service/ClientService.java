@@ -41,7 +41,7 @@ public class ClientService {
         return clientMapper.mapToDTO(savedClient);
     }
 
-    public ClientResponseDTO updateClient(UpdateClientDTO dto, Long id) {
+    public ClientResponseDTO updateClient(Long id, UpdateClientDTO dto) {
         log.info("Обновление клиента с id={}", id);
         log.debug("Детали UpdateClientDTO: {}", dto);
 
@@ -68,7 +68,7 @@ public class ClientService {
         log.info("Клиент с id={} успешно удалён", id);
     }
 
-    public ClientResponseDTO findClientById(Long id) {
+    public ClientResponseDTO findById(Long id) {
         log.info("Поиск клиента по id={}", id);
 
         return clientRepository.findById(id)

@@ -10,6 +10,7 @@ import com.crudapi.crud.mapper.filterMapper.EmployeeFilterMapper;
 import com.crudapi.crud.service.EmployeeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -17,38 +18,42 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/employees")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
     private final EmployeeFilterMapper employeeFilterMapper;
+    private EmployeeResponseDTO employeeDto;
 
-    @PostMapping("/employee")
+    @PostMapping
     @Operation(
             summary = "Create a new employee",
             description = "Creating a new employee",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Employee created successfully"),
+                    @ApiResponse(responseCode = "201", description = "Employee created successfully"),
                     @ApiResponse(responseCode = "400", description = "Employee is not created")
             }
     )
-    public EmployeeResponseDTO createEmployee(@RequestBody CreateEmployeeDTO dto) {
-        return employeeService.createEmployee(dto);
+    public ResponseEntity<EmployeeResponseDTO> createEmployee(@RequestBody @Valid CreateEmployeeDTO dto) {
+        employeeDto = employeeService.createEmployee(dto);
+        return ResponseEntity.ok(employeeDto);
     }
 
-    @PutMapping("/employee/{id}")
+    @PutMapping("/{id}")
     @Operation(
             summary = "Update an existing employee",
             description = "Updating an existing employee",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Employee updated successfully"),
+                    @ApiResponse(responseCode = "201", description = "Employee updated successfully"),
                     @ApiResponse(responseCode = "400", description = "Employee is not updated")
             }
     )
-    public EmployeeResponseDTO updateEmployee(@PathVariable Long id, @RequestBody UpdateEmployeeDTO dto) {
-        return employeeService.updateEmployee(id, dto);
+    public ResponseEntity<EmployeeResponseDTO> updateEmployee(@PathVariable Long id, @RequestBody @Valid UpdateEmployeeDTO dto) {
+        employeeDto = employeeService.updateEmployee(id, dto);
+        return ResponseEntity.ok(employeeDto);
     }
 
-    @DeleteMapping("/employee/{id}")
+    @DeleteMapping("/{id}")
     @Operation(
             summary = "Delete an existing employee",
             description = "Deleting an existing employee",
@@ -62,13 +67,13 @@ public class EmployeeController {
         return true;
     }
 
-    @GetMapping("/employee")
+    @GetMapping
     @Operation(
             summary = "Get all employees",
             description = "Getting all employees",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Employees found successfully"),
-                    @ApiResponse(responseCode = "400", description = "Employees not found")
+                    @ApiResponse(responseCode = "404", description = "Employees not found")
             }
     )
     public ResponseEntity<Page<EmployeeResponseDTO>> getAllEmployees(

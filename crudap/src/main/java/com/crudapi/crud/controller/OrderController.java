@@ -12,6 +12,7 @@ import com.crudapi.crud.service.OrderService;
 import com.crudapi.crud.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -21,19 +22,21 @@ import java.time.LocalDateTime;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/orders")
 public class OrderController {
 
     private final OrderService orderService;
     private final OrderFilterMapper orderFilterMapper;
     private final ProductService productService;
+    private OrderResponseDTO orderDto;
 
 
-    @PostMapping("/orders/{orderId}/products/{productId}")
+    @PostMapping("/{orderId}/products/{productId}")
     @Operation(
             summary = "Add product to order",
             description = "Adding a new product",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Product added successfully"),
+                    @ApiResponse(responseCode = "201", description = "Product added successfully"),
                     @ApiResponse(responseCode = "400", description = "Product is not added")
             }
     )
@@ -45,20 +48,21 @@ public class OrderController {
         return ResponseEntity.ok(dto);
     }
 
-    @PostMapping("/orders")
+    @PostMapping
     @Operation(
             summary = "Create a new order",
             description = "Creating a new order",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Order created successfully"),
+                    @ApiResponse(responseCode = "201", description = "Order created successfully"),
                     @ApiResponse(responseCode = "400", description = "Order is not created")
             }
     )
-    public OrderResponseDTO createOrder(@RequestBody CreateOrderDTO dto) {
-        return orderService.createOrder(dto);
+    public ResponseEntity<OrderResponseDTO> createOrder(@RequestBody @Valid CreateOrderDTO dto) {
+        orderDto = orderService.createOrder(dto);
+        return ResponseEntity.ok(orderDto);
     }
 
-    @PutMapping("/order/{id}")
+    @PutMapping("/{id}")
     @Operation(
             summary = "Update an existing order",
             description = "Updating an existing order",
@@ -67,11 +71,12 @@ public class OrderController {
                     @ApiResponse(responseCode = "400", description = "Order is not updated")
             }
     )
-    public OrderResponseDTO updateOrder(@PathVariable Long id, @RequestBody UpdateOrderDTO dto) {
-        return orderService.updateOrder(id, dto);
+    public ResponseEntity<OrderResponseDTO> updateOrder(@PathVariable Long id, @RequestBody @Valid UpdateOrderDTO dto) {
+        orderDto = orderService.updateOrder(id, dto);
+        return ResponseEntity.ok(orderDto);
     }
 
-    @DeleteMapping("/order/{id}")
+    @DeleteMapping("/{id}")
     @Operation(
             summary = "Delete an existing order",
             description = "Deleting an existing order",
@@ -85,26 +90,27 @@ public class OrderController {
         return true;
     }
 
-    @GetMapping("/order/{id}")
+    @GetMapping("/{id}")
     @Operation(
             summary = "Get an order by id",
             description = "Getting an order by id",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Order found successfully"),
-                    @ApiResponse(responseCode = "400", description = "Order not found")
+                    @ApiResponse(responseCode = "404", description = "Order not found")
             }
     )
-    public OrderResponseDTO getOrderById(@PathVariable Long id) {
-        return orderService.getOrder(id);
+    public ResponseEntity<OrderResponseDTO> getOrderById(@PathVariable Long id) {
+        orderDto = orderService.findById(id);
+        return ResponseEntity.ok(orderDto);
     }
 
-    @GetMapping("/order")
+    @GetMapping
     @Operation(
             summary = "Get all orders",
             description = "Getting all orders",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Orders found successfully"),
-                    @ApiResponse(responseCode = "400", description = "Orders not found")
+                    @ApiResponse(responseCode = "404", description = "Orders not found")
             }
     )
     public ResponseEntity<Page<OrderResponseDTO>> getOrders(
@@ -125,7 +131,7 @@ public class OrderController {
                 sortBy,
                 sortDirection
         );
-        Page<OrderResponseDTO> orders = orderService.getOrders(filter);
+        Page<OrderResponseDTO> orders = orderService.getAllOrders(filter);
         return ResponseEntity.ok(orders);
     }
 }
