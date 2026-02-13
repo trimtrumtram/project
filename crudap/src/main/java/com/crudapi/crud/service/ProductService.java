@@ -8,12 +8,14 @@ import com.crudapi.crud.dto.product.ProductResponseDTO;
 import com.crudapi.crud.dto.product.UpdateProductDTO;
 import com.crudapi.crud.enums.sort.ProductSortField;
 import com.crudapi.crud.enums.sort.SortDirection;
+import com.crudapi.crud.exeptions.NotFoundException;
 import com.crudapi.crud.mapper.entityMapper.ProductMapper;
 import com.crudapi.crud.model.Order;
 import com.crudapi.crud.model.Product;
 import com.crudapi.crud.repository.OrderRepository;
 import com.crudapi.crud.repository.ProductRepository;
 import com.crudapi.crud.specification.ProductSpecification;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,6 +28,7 @@ import java.util.List;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class ProductService {
 
     private final ProductRepository productRepository;
@@ -33,26 +36,19 @@ public class ProductService {
     private final OrderRepository orderRepository;
     private final KafkaProducer kafkaProducer;
 
-    public ProductService(ProductRepository productRepository, ProductMapper productMapper, OrderRepository orderRepository, KafkaProducer kafkaProducer) {
-        this.productRepository = productRepository;
-        this.productMapper = productMapper;
-        this.orderRepository = orderRepository;
-        this.kafkaProducer = kafkaProducer;
-    }
-
     public ProductResponseDTO addProductToOrder(Long orderId, long productId) {
         log.info("Добавление продукта в заказ: orderId={}, productId={}", orderId, productId);
 
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> {
                     log.error("Продукт не найден: id={}", productId);
-                    return new RuntimeException("Product not found");
+                    return new NotFoundException("Product not found");
                 });
 
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> {
                     log.error("Заказ не найден: id={}", orderId);
-                    return new RuntimeException("Order not found");
+                    return new NotFoundException("Order not found");
                 });
 
         order.getProducts().add(product);
@@ -81,7 +77,7 @@ public class ProductService {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> {
                     log.error("Продукт не найден: id={}", id);
-                    return new RuntimeException("Product not found");
+                    return new NotFoundException("Product not found");
                 });
 
         List<String> eventTypes = new ArrayList<>();
@@ -125,7 +121,7 @@ public class ProductService {
 
         if (!productRepository.existsById(id)) {
             log.error("Попытка удалить несуществующий продукт id={}", id);
-            throw new RuntimeException("Product not found");
+            throw new NotFoundException("Product not found");
         }
 
         productRepository.deleteById(id);
@@ -142,7 +138,7 @@ public class ProductService {
                 })
                 .orElseThrow(() -> {
                     log.error("Продукт не найден: id={}", id);
-                    return new RuntimeException("Product not found");
+                    return new NotFoundException("Product not found");
                 });
     }
 

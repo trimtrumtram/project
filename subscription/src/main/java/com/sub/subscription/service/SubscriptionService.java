@@ -3,6 +3,7 @@ package com.sub.subscription.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import com.sub.subscription.model.Subscription;
@@ -18,19 +19,13 @@ import com.sub.subscription.dto.SubscriptionUpdateDTO;
 import com.sub.subscription.model.EventType;
 
 @Service
+@RequiredArgsConstructor
 public class SubscriptionService {
 
     private final SubscriptionRepository repo;
     private final SubscriptionMapper mapper;
     private final CrmValidationService crm;
     private final KafkaProducer producer;
-
-    public SubscriptionService (SubscriptionRepository repo, SubscriptionMapper mapper, CrmValidationService crm, KafkaProducer producer) {
-        this.repo = repo;
-        this.mapper = mapper;
-        this.crm = crm;
-        this.producer = producer;
-    }
 
     @Transactional
     public SubscriptionResponseDTO createSub(SubscriptionCreateDTO dto) {

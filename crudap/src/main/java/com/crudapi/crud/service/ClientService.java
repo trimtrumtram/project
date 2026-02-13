@@ -3,22 +3,22 @@ package com.crudapi.crud.service;
 import com.crudapi.crud.dto.client.ClientResponseDTO;
 import com.crudapi.crud.dto.client.CreateClientDTO;
 import com.crudapi.crud.dto.client.UpdateClientDTO;
+import com.crudapi.crud.exeptions.EmailAlreadyExistsException;
+import com.crudapi.crud.exeptions.NotFoundException;
+import com.crudapi.crud.exeptions.PhoneAlreadyExistsException;
 import com.crudapi.crud.mapper.entityMapper.ClientMapper;
 import com.crudapi.crud.model.Client;
 import com.crudapi.crud.repository.ClientRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class ClientService {
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
-
-    public ClientService(ClientRepository clientRepository, ClientMapper clientMapper) {
-        this.clientRepository = clientRepository;
-        this.clientMapper = clientMapper;
-    }
 
     public ClientResponseDTO createClient(CreateClientDTO dto) {
         log.info("Создание клиента: email={}, phone={}", dto.getEmail(), dto.getPhone());
@@ -26,10 +26,10 @@ public class ClientService {
 
         if (clientRepository.existsByEmail(dto.getEmail())) {
             log.error("Попытка создать клиента с существующим email: {}", dto.getEmail());
-            throw new IllegalArgumentException("Client with email " + dto.getEmail() + " already exist");
+            throw new EmailAlreadyExistsException("Client with email " + dto.getEmail() + " already exist");
         } else if (clientRepository.existsByPhone(dto.getPhone())) {
             log.error("Попытка создать клиента с существующим phone: {}", dto.getPhone());
-            throw new IllegalArgumentException("Client with phone " + dto.getPhone() + " already exist");
+            throw new PhoneAlreadyExistsException("Client with phone " + dto.getPhone() + " already exist");
         }
 
         Client client = clientMapper.mapToEntity(dto);
@@ -61,7 +61,7 @@ public class ClientService {
 
         if (!clientRepository.existsById(id)) {
             log.error("Попытка удалить несуществующего клиента с id={}", id);
-            throw new IllegalArgumentException("Client with id " + id + " does not exist");
+            throw new NotFoundException("Client with id " + id + " does not exist");
         }
 
         clientRepository.deleteById(id);
@@ -78,7 +78,7 @@ public class ClientService {
                 })
                 .orElseThrow(() -> {
                     log.error("Клиент с id={} не найден", id);
-                    return new IllegalArgumentException("Client with id " + id + " does not exist");
+                    return new NotFoundException("Client with id " + id + " does not exist");
                 });
     }
 
@@ -89,21 +89,21 @@ public class ClientService {
             return clientRepository.findById(id)
                     .orElseThrow(() -> {
                         log.error("Клиент с id={} не найден", id);
-                        return new IllegalArgumentException("Client with id " + id + " does not exist");
+                        return new NotFoundException("Client with id " + id + " does not exist");
                     });
         }
         if (dto.getEmail() != null && !dto.getEmail().isBlank()) {
             return clientRepository.findByEmail(dto.getEmail())
                     .orElseThrow(() -> {
                         log.error("Клиент с email={} не найден", dto.getEmail());
-                        return new IllegalArgumentException("Client with email " + dto.getEmail() + " does not exist");
+                        return new NotFoundException("Client with email " + dto.getEmail() + " does not exist");
                     });
         }
         if (dto.getPhone() != null && !dto.getPhone().isBlank()) {
             return clientRepository.findByPhone(dto.getPhone())
                     .orElseThrow(() -> {
                         log.error("Клиент с phone={} не найден", dto.getPhone());
-                        return new IllegalArgumentException("Client with phone " + dto.getPhone() + " does not exist");
+                        return new NotFoundException("Client with phone " + dto.getPhone() + " does not exist");
                     });
         }
 
@@ -117,7 +117,7 @@ public class ClientService {
 
             if (clientRepository.existsByEmail(newEmail)) {
                 log.error("Email {} уже используется другим клиентом", newEmail);
-                throw new IllegalArgumentException("Client with email " + newEmail + " already exist");
+                throw new EmailAlreadyExistsException("Client with email " + newEmail + " already exist");
             }
         }
     }

@@ -2,6 +2,8 @@ package com.crudapi.crud.service;
 
 import com.crudapi.crud.dto.employee.CreateEmployeeDTO;
 import com.crudapi.crud.enums.sort.EmployeeSortField;
+import com.crudapi.crud.exeptions.EmailAlreadyExistsException;
+import com.crudapi.crud.exeptions.NotFoundException;
 import com.crudapi.crud.mapper.entityMapper.EmployeeMapper;
 import com.crudapi.crud.specification.EmployeeSpecification;
 import com.crudapi.crud.enums.sort.SortDirection;
@@ -10,6 +12,7 @@ import com.crudapi.crud.dto.employee.EmployeeResponseDTO;
 import com.crudapi.crud.dto.employee.UpdateEmployeeDTO;
 import com.crudapi.crud.model.Employee;
 import com.crudapi.crud.repository.EmployeeRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,23 +22,19 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
     private final EmployeeMapper employeeMapper;
 
-    public EmployeeService(EmployeeRepository employeeRepository, EmployeeMapper employeeMapper) {
-        this.employeeRepository = employeeRepository;
-        this.employeeMapper = employeeMapper;
-    }
-
-    public EmployeeResponseDTO createEmployee(CreateEmployeeDTO dto) {
+        public EmployeeResponseDTO createEmployee(CreateEmployeeDTO dto) {
         log.info("Создание сотрудника: email={}", dto.getEmail());
         log.debug("Детали входного DTO: {}", dto);
 
         if (employeeRepository.existsEmployeeByEmail(dto.getEmail())) {
             log.error("Попытка создать сотрудника с уже существующим email: {}", dto.getEmail());
-            throw new IllegalArgumentException("Email already exists");
+            throw new EmailAlreadyExistsException("Email already exists");
         }
 
         Employee employee = employeeMapper.mapToEntity(dto);
@@ -68,7 +67,7 @@ public class EmployeeService {
 
         if (!employeeRepository.existsById(id)) {
             log.error("Попытка удалить несуществующего сотрудника: id={}", id);
-            throw new IllegalArgumentException("Employee with id " + id + " not found");
+            throw new NotFoundException("Employee with id " + id + " not found");
         }
 
         employeeRepository.deleteById(id);
@@ -102,7 +101,7 @@ public class EmployeeService {
             return result;
         } catch (Exception e) {
             log.error("Ошибка при получении сотрудников с фильтром {}: {}", filter, e.getMessage(), e);
-            throw new IllegalArgumentException("Invalid filter: " + e.getMessage());
+            throw new NotFoundException("Invalid filter: " + e.getMessage());
         }
     }
 
@@ -113,14 +112,14 @@ public class EmployeeService {
             return employeeRepository.findById(id)
                     .orElseThrow(() -> {
                         log.error("Сотрудник с id={} не найден", id);
-                        return new IllegalArgumentException("Employee with id " + id + " not found");
+                        return new NotFoundException("Employee with id " + id + " not found");
                     });
         }
         if (dto.getEmail() != null) {
             return employeeRepository.findEmployeeByEmail(dto.getEmail())
                     .orElseThrow(() -> {
                         log.error("Сотрудник с email={} не найден", dto.getEmail());
-                        return new IllegalArgumentException("Employee with email " + dto.getEmail() + " not found");
+                        return new NotFoundException("Employee with email " + dto.getEmail() + " not found");
                     });
         }
 
@@ -134,7 +133,7 @@ public class EmployeeService {
 
             if (employeeRepository.existsEmployeeByEmail(newEmail)) {
                 log.error("Email {} уже существует", newEmail);
-                throw new IllegalArgumentException("Employee with email " + newEmail + " already exists");
+                throw new EmailAlreadyExistsException("Employee with email " + newEmail + " already exists");
             }
         }
     }

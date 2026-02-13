@@ -6,10 +6,12 @@ import com.crudapi.crud.dto.order.OrderResponseDTO;
 import com.crudapi.crud.dto.order.UpdateOrderDTO;
 import com.crudapi.crud.enums.sort.OrderSortField;
 import com.crudapi.crud.enums.sort.SortDirection;
+import com.crudapi.crud.exeptions.NotFoundException;
 import com.crudapi.crud.mapper.entityMapper.OrderMapper;
 import com.crudapi.crud.model.Order;
 import com.crudapi.crud.specification.OrderSpecification;
 import com.crudapi.crud.repository.OrderRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,15 +23,11 @@ import java.time.LocalDateTime;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class OrderService {
 
     private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
-
-    public OrderService(OrderRepository orderRepository, OrderMapper orderMapper) {
-        this.orderRepository = orderRepository;
-        this.orderMapper = orderMapper;
-    }
 
     public OrderResponseDTO createOrder(CreateOrderDTO dto) {
         log.info("Создание заказа");
@@ -52,7 +50,7 @@ public class OrderService {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> {
                     log.error("Заказ не найден: id={}", id);
-                    return new RuntimeException("Order not found");
+                    return new NotFoundException("Order not found");
                 });
 
         order.setStatus(dto.getStatus());
@@ -69,7 +67,7 @@ public class OrderService {
 
         if (!orderRepository.existsById(id)) {
             log.error("Попытка удалить несуществующий заказ id={}", id);
-            throw new RuntimeException("Order not found");
+            throw new NotFoundException("Order not found");
         }
 
         orderRepository.deleteById(id);
@@ -86,7 +84,7 @@ public class OrderService {
                 })
                 .orElseThrow(() -> {
                     log.error("Заказ с id={} не найден", id);
-                    return new RuntimeException("Order not found");
+                    return new NotFoundException("Order not found");
                 });
     }
 
@@ -115,6 +113,7 @@ public class OrderService {
             log.info("Найдено заказов: {}", result.getTotalElements());
             return result;
         } catch (Exception e) {
+            // TODO: переписать правильную обработку ошибок при ошибке в фильтре
             log.error("Ошибка при получении заказов с фильтром {}: {}", filter, e.getMessage(), e);
             throw new IllegalArgumentException("Invalid filter: " + e.getMessage());
         }
