@@ -16,15 +16,10 @@ public class NotificationConsumer {
     private final NotificationService service;
 
     @KafkaListener(topics = "notification-topic", groupId = "notification")
-    public void consume(String message) {
-        System.out.println("Received notification: " + message);
-
-        NotificationRequest req = new NotificationRequest();
-        req.setType(NotificationType.CONSOLE);
-        req.setRecipient("system");
-        req.setTitle("Subscription Notification");
-        req.setBody(message);
-
+    public void consume(NotificationRequest req) {
+        if (req.getType() == null) {
+            req.setType(NotificationType.CONSOLE);
+        }
         service.send(req);
     }
 }

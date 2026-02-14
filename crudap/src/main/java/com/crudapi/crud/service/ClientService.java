@@ -1,5 +1,7 @@
 package com.crudapi.crud.service;
 
+import com.crudapi.crud.config.ClientEventProducer;
+import com.crudapi.crud.dto.client.ClientDeletedEvent;
 import com.crudapi.crud.dto.client.ClientResponseDTO;
 import com.crudapi.crud.dto.client.CreateClientDTO;
 import com.crudapi.crud.dto.client.UpdateClientDTO;
@@ -19,6 +21,7 @@ import org.springframework.stereotype.Service;
 public class ClientService {
     private final ClientRepository clientRepository;
     private final ClientMapper clientMapper;
+    private final ClientEventProducer eventProducer;
 
     public ClientResponseDTO createClient(CreateClientDTO dto) {
         log.info("Создание клиента: email={}, phone={}", dto.getEmail(), dto.getPhone());
@@ -66,6 +69,7 @@ public class ClientService {
 
         clientRepository.deleteById(id);
         log.info("Клиент с id={} успешно удалён", id);
+        eventProducer.sendClientDeletedEvent(new ClientDeletedEvent(id));
     }
 
     public ClientResponseDTO findById(Long id) {

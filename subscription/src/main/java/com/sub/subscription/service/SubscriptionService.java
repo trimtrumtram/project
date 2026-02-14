@@ -50,7 +50,10 @@ public class SubscriptionService {
         return saved;
     }
 
-    
+    public void deleteSubscriptionByClientId(long clientId) {
+        repo.deleteByClientId(clientId);
+    }
+
 
     public void deleteSubscription(Long id) {
 

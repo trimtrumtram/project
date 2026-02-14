@@ -1,6 +1,6 @@
 package com.crudapi.crud.service;
 
-import com.crudapi.crud.config.KafkaProducer;
+import com.crudapi.crud.config.ProductEventProducer;
 import com.crudapi.crud.dto.ProductChangeEvent;
 import com.crudapi.crud.dto.product.CreateProductDTO;
 import com.crudapi.crud.dto.product.ProductFilterDTO;
@@ -34,7 +34,7 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
     private final OrderRepository orderRepository;
-    private final KafkaProducer kafkaProducer;
+    private final ProductEventProducer kafkaProducer;
 
     public ProductResponseDTO addProductToOrder(Long orderId, long productId) {
         log.info("Добавление продукта в заказ: orderId={}, productId={}", orderId, productId);

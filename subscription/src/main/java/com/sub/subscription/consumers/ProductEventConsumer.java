@@ -1,9 +1,11 @@
-package com.sub.subscription;
+package com.sub.subscription.consumers;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import com.sub.subscription.dto.event.NotificationEvent;
+import com.sub.subscription.dto.event.ProductChangeEvent;
 import com.sub.subscription.model.EventType;
 import com.sub.subscription.model.Subscription;
 import com.sub.subscription.service.SubscriptionService;
@@ -11,7 +13,6 @@ import com.sub.subscription.service.SubscriptionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -20,27 +21,17 @@ import java.util.List;
 public class ProductEventConsumer {
 
     private final SubscriptionService subscriptionService;
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, NotificationEvent> kafkaTemplate;
 
     @KafkaListener(topics = "product-events", groupId = "subscription-group")
-    public void consume(String message) {
-        log.info("Received product change event: {}", message);
-
-        String[] parts = message.split(":");
-        if (parts.length != 2) {
-            log.error("Invalid message format: {}", message);
+    public void consume(ProductChangeEvent event) {
+        log.info("Received product change event: {}", event);
+        if (event == null || event.getProductId() == null || event.getEventTypes() == null) {
+            log.error("Invalid product change event payload: {}", event);
             return;
         }
-
-        Long productId;
-        try {
-            productId = Long.parseLong(parts[0]);
-        } catch (NumberFormatException e) {
-            log.error("Invalid productId: {}", parts[0]);
-            return;
-        }
-
-        List<String> eventTypes = Arrays.asList(parts[1].split(","));
+        Long productId = event.getProductId();
+        List<String> eventTypes = event.getEventTypes();
 
         for (String eventTypeStr : eventTypes) {
             try {
@@ -48,9 +39,14 @@ public class ProductEventConsumer {
                 List<Subscription> subscriptions = subscriptionService.getSubscriptionsByProductIdAndEventType(productId, eventType);
 
                 for (Subscription subscription : subscriptions) {
-                    String notificationMessage = String.format("Product %d changed: %s for client %d",
-                            productId, eventType.getDescription(), subscription.getClientId());
-                    kafkaTemplate.send("notification-topic", notificationMessage);
+                    NotificationEvent notification = NotificationEvent.builder()
+                            .type("CONSOLE")
+                            .recipient("client-" + subscription.getClientId())
+                            .title("Product Update")
+                            .body(String.format("Product %d changed: %s for client %d",
+                                    productId, eventType.getDescription(), subscription.getClientId()))
+                            .build();
+                    kafkaTemplate.send("notification-topic", String.valueOf(subscription.getClientId()), notification);
                     log.info("Sent notification for subscription: {}", subscription.getId());
                 }
             } catch (IllegalArgumentException e) {
