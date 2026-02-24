@@ -1,13 +1,13 @@
 package com.crudapi.crud.service;
 
 import com.crudapi.crud.config.ClientEventProducer;
-import com.crudapi.crud.dto.client.ClientDeletedEvent;
+import com.common.common.events.;
 import com.crudapi.crud.dto.client.ClientResponseDTO;
 import com.crudapi.crud.dto.client.CreateClientDTO;
 import com.crudapi.crud.dto.client.UpdateClientDTO;
-import com.crudapi.crud.exeptions.EmailAlreadyExistsException;
-import com.crudapi.crud.exeptions.NotFoundException;
-import com.crudapi.crud.exeptions.PhoneAlreadyExistsException;
+import com.crudapi.crud.exceptions.EmailAlreadyExistsException;
+import com.crudapi.crud.exceptions.NotFoundException;
+import com.crudapi.crud.exceptions.PhoneAlreadyExistsException;
 import com.crudapi.crud.mapper.entityMapper.ClientMapper;
 import com.crudapi.crud.model.Client;
 import com.crudapi.crud.repository.ClientRepository;

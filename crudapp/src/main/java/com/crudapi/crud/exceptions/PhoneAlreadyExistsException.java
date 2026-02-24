@@ -1,4 +1,4 @@
-package com.crudapi.crud.exeptions;
+package com.crudapi.crud.exceptions;
 
 public class PhoneAlreadyExistsException extends RuntimeException{
 

@@ -1,14 +1,14 @@
 package com.crudapi.crud.service;
 
 import com.crudapi.crud.config.ProductEventProducer;
-import com.crudapi.crud.dto.ProductChangeEvent;
+import com.common.common.events.ProductChangeEvent;
 import com.crudapi.crud.dto.product.CreateProductDTO;
 import com.crudapi.crud.dto.product.ProductFilterDTO;
 import com.crudapi.crud.dto.product.ProductResponseDTO;
 import com.crudapi.crud.dto.product.UpdateProductDTO;
-import com.crudapi.crud.enums.sort.ProductSortField;
-import com.crudapi.crud.enums.sort.SortDirection;
-import com.crudapi.crud.exeptions.NotFoundException;
+import com.common.common.enums.sort.ProductSortField;
+import com.common.common.enums.sort.SortDirection;
+import com.crudapi.crud.exceptions.NotFoundException;
 import com.crudapi.crud.mapper.entityMapper.ProductMapper;
 import com.crudapi.crud.model.Order;
 import com.crudapi.crud.model.Product;

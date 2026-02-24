@@ -6,7 +6,7 @@ import com.crudapi.crud.dto.order.OrderResponseDTO;
 import com.crudapi.crud.dto.order.UpdateOrderDTO;
 import com.crudapi.crud.enums.sort.OrderSortField;
 import com.crudapi.crud.enums.sort.SortDirection;
-import com.crudapi.crud.exeptions.NotFoundException;
+import com.crudapi.crud.exceptions.NotFoundException;
 import com.crudapi.crud.mapper.entityMapper.OrderMapper;
 import com.crudapi.crud.model.Order;
 import com.crudapi.crud.specification.OrderSpecification;

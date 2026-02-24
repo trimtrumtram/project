@@ -25,8 +25,12 @@ public class ProductSpecification {
                 ));
             }
 
-            if(startPrice != null || endPrice != null) {
-                predicates.add(criteriaBuilder.between(root.get("price"), startPrice, endPrice));
+            if(startPrice != null) {
+                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("price"), startPrice));
+            }
+
+            if(endPrice != null) {
+                predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("price"), endPrice));
             }
 
             return criteriaBuilder.and(predicates.toArray(new Predicate [0]));
