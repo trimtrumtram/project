@@ -1,6 +1,6 @@
 package com.sub.subscription.consumers;
 
-import com.sub.subscription.dto.event.ClientDeletedEvent;
+import com.common.common.events.ClientDeletedEvent;
 import com.sub.subscription.service.SubscriptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;

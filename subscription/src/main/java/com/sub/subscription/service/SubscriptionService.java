@@ -16,7 +16,7 @@ import com.sub.subscription.config.KafkaProducer;
 import com.sub.subscription.dto.SubscriptionCreateDTO;
 import com.sub.subscription.dto.SubscriptionResponseDTO;
 import com.sub.subscription.dto.SubscriptionUpdateDTO;
-import com.sub.subscription.model.EventType;
+import com.common.common.enums.EventType;
 
 @Service
 @RequiredArgsConstructor
@@ -61,10 +61,9 @@ public class SubscriptionService {
                 .orElseThrow(() -> new IllegalArgumentException("Subscription not found"));
 
         SubscriptionResponseDTO dto = mapper.toDto(subscription);
-        producer.sendNotification(dto);
-        
-        repo.deleteById(id);
 
+        repo.deleteById(id);
+        producer.sendNotification(dto);
     }
 
     public List<SubscriptionResponseDTO> getSubscriptionByClientId(Long clientId) {
@@ -74,7 +73,7 @@ public class SubscriptionService {
                 .toList();
     }
 
-    public List<Subscription> getSubscriptionsByProductIdAndEventType(Long productId, EventType eventType) {
+    public List<SubscriptionResponseDTO> getSubscriptionsByProductIdAndEventType(Long productId, EventType eventType) {
         return repo.findByProductIdAndEventType(productId, eventType);
     }
 

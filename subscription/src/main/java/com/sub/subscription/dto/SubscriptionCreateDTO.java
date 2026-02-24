@@ -2,7 +2,7 @@ package com.sub.subscription.dto;
 
 import lombok.*;
 
-import com.sub.subscription.model.EventType;
+import com.common.common.enums.EventType;
 
 import jakarta.validation.constraints.NotNull;
 

@@ -1,4 +1,4 @@
-package com.sub.subscription.dto.event;
+package com.common.common.events;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

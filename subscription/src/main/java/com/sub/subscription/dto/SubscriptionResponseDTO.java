@@ -2,7 +2,7 @@ package com.sub.subscription.dto;
 
 import java.time.LocalDateTime;
 
-import com.sub.subscription.model.EventType;
+import com.common.common.enums.EventType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

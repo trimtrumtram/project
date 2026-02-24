@@ -1,4 +1,4 @@
-package com.crudapi.crud.dto;
+package com.common.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

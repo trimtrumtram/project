@@ -1,4 +1,4 @@
-package com.not.notification.model;
+package com.common.common.enums.notification;
 
 public enum NotificationStatus {
 

@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.common.common.enums.EventType;
+
 import jakarta.persistence.*;
 import lombok.*;
 

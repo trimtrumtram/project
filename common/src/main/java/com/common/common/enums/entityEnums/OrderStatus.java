@@ -1,4 +1,4 @@
-package com.crudapi.crud.enums.entityEnums;
+package com.common.common.enums.entityEnums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

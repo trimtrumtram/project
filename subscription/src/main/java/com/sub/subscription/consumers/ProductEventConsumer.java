@@ -1,13 +1,13 @@
 package com.sub.subscription.consumers;
 
+import com.common.common.enums.EventType;
+import com.sub.subscription.dto.SubscriptionResponseDTO;
+import com.sub.subscription.dto.event.NotificationEvent;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import com.sub.subscription.dto.event.NotificationEvent;
-import com.sub.subscription.dto.event.ProductChangeEvent;
-import com.sub.subscription.model.EventType;
-import com.sub.subscription.model.Subscription;
+import com.common.common.events.ProductChangeEvent;
 import com.sub.subscription.service.SubscriptionService;
 
 import lombok.RequiredArgsConstructor;
@@ -36,18 +36,18 @@ public class ProductEventConsumer {
         for (String eventTypeStr : eventTypes) {
             try {
                 EventType eventType = EventType.valueOf(eventTypeStr);
-                List<Subscription> subscriptions = subscriptionService.getSubscriptionsByProductIdAndEventType(productId, eventType);
+                List<SubscriptionResponseDTO> subscriptions = subscriptionService.getSubscriptionsByProductIdAndEventType(productId, eventType);
 
-                for (Subscription subscription : subscriptions) {
+                for (SubscriptionResponseDTO dto : subscriptions) {
                     NotificationEvent notification = NotificationEvent.builder()
                             .type("CONSOLE")
-                            .recipient("client-" + subscription.getClientId())
+                            .recipient("client-" + dto.getClientId())
                             .title("Product Update")
                             .body(String.format("Product %d changed: %s for client %d",
-                                    productId, eventType.getDescription(), subscription.getClientId()))
+                                    productId, eventType.getDescription(), dto.getClientId()))
                             .build();
-                    kafkaTemplate.send("notification-topic", String.valueOf(subscription.getClientId()), notification);
-                    log.info("Sent notification for subscription: {}", subscription.getId());
+                    kafkaTemplate.send("notification-topic", String.valueOf(dto.getClientId()), notification);
+                    log.info("Sent notification for subscription: {}", dto.getId());
                 }
             } catch (IllegalArgumentException e) {
                 log.error("Unknown event type: {}", eventTypeStr);

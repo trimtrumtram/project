@@ -9,5 +9,5 @@ import com.not.notification.model.NotificationType;
 public interface NotificationSender {
 
     void send(NotificationRequest req);
-    boolean supports(NotificationType type);
+    NotificationType getType();
 }

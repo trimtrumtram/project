@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.sub.subscription.model.EventType;
+import com.common.common.enums.EventType;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

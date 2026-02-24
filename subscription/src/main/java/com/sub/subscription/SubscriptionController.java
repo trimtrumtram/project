@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sub.subscription.dto.SubscriptionCreateDTO;
 import com.sub.subscription.dto.SubscriptionResponseDTO;
 import com.sub.subscription.dto.SubscriptionUpdateDTO;
-import com.sub.subscription.model.Subscription;
 import com.sub.subscription.service.SubscriptionService;
 
 import lombok.RequiredArgsConstructor;
@@ -25,15 +24,13 @@ import lombok.RequiredArgsConstructor;
 public class SubscriptionController {
 
     private final SubscriptionService subscriptionService;
-    private final SubscriptionRepository subscriptionRepository;
-    private final SubscriptionMapper subscriptionMapper;
 
     @PostMapping
     public SubscriptionResponseDTO createSubscription(@RequestBody SubscriptionCreateDTO dto) {
         return subscriptionService.createSub(dto);
     }
 
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public SubscriptionResponseDTO getSubscriptionById(@PathVariable Long id) {
         Subscription subscription = subscriptionRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Subscription not found"));
@@ -46,7 +43,7 @@ public class SubscriptionController {
                 .stream()
                 .map(subscriptionMapper::toDto)
                 .toList();
-    }
+    }*/
 
     @GetMapping("/client/{clientId}")
     public List<SubscriptionResponseDTO> getSubscriptionsByClientId(@PathVariable Long clientId) {

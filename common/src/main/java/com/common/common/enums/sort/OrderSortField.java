@@ -1,4 +1,4 @@
-package com.crudapi.crud.enums.sort;
+package com.common.common.enums.sort;
 
 import lombok.Getter;
 
