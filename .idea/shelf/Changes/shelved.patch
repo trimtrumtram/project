@@ -1,0 +1,245 @@
+Index: subscription/src/main/java/com/sub/subscription/dto/event/ClientDeletedEvent.java
+===================================================================
+diff --git a/subscription/src/main/java/com/sub/subscription/dto/event/ClientDeletedEvent.java b/subscription/src/main/java/com/sub/subscription/dto/event/ClientDeletedEvent.java
+deleted file mode 100644
+--- a/subscription/src/main/java/com/sub/subscription/dto/event/ClientDeletedEvent.java	(revision 65a46375df718040e3a112e9f3905182847a8853)
++++ /dev/null	(revision 65a46375df718040e3a112e9f3905182847a8853)
+@@ -1,12 +0,0 @@
+-package com.sub.subscription.dto.event;
+-
+-import lombok.AllArgsConstructor;
+-import lombok.Data;
+-import lombok.NoArgsConstructor;
+-
+-@Data
+-@AllArgsConstructor
+-@NoArgsConstructor
+-public class ClientDeletedEvent {
+-    private Long clientId;
+-}
+Index: crudap/src/main/java/com/crudapi/crud/enums/sort/EmployeeSortField.java
+===================================================================
+diff --git a/crudap/src/main/java/com/crudapi/crud/enums/sort/EmployeeSortField.java b/crudap/src/main/java/com/crudapi/crud/enums/sort/EmployeeSortField.java
+deleted file mode 100644
+--- a/crudap/src/main/java/com/crudapi/crud/enums/sort/EmployeeSortField.java	(revision 65a46375df718040e3a112e9f3905182847a8853)
++++ /dev/null	(revision 65a46375df718040e3a112e9f3905182847a8853)
+@@ -1,19 +0,0 @@
+-package com.crudapi.crud.enums.sort;
+-
+-import lombok.Getter;
+-
+-@Getter
+-public enum EmployeeSortField {
+-
+-    ID("id"),
+-    FIRSTNAME("firstName"),
+-    LASTNAME("lastName"),
+-    ROLE("role"),
+-    EMAIL("email");
+-
+-    private final String sortBy;
+-
+-    EmployeeSortField(String sortBy) {
+-        this.sortBy = sortBy;
+-    }
+-}
+Index: crudap/src/main/java/com/crudapi/crud/enums/sort/OrderSortField.java
+===================================================================
+diff --git a/crudap/src/main/java/com/crudapi/crud/enums/sort/OrderSortField.java b/crudap/src/main/java/com/crudapi/crud/enums/sort/OrderSortField.java
+deleted file mode 100644
+--- a/crudap/src/main/java/com/crudapi/crud/enums/sort/OrderSortField.java	(revision 65a46375df718040e3a112e9f3905182847a8853)
++++ /dev/null	(revision 65a46375df718040e3a112e9f3905182847a8853)
+@@ -1,17 +0,0 @@
+-package com.crudapi.crud.enums.sort;
+-
+-import lombok.Getter;
+-
+-@Getter
+-public enum OrderSortField {
+-
+-    CREATION_DATE_TIME("creationDateTime"),
+-    START_DATE("startDate"),
+-    END_DATE("endDate");
+-
+-    private final String sortBy;
+-
+-    OrderSortField(String sortBy) {
+-        this.sortBy = sortBy;
+-    }
+-}
+Index: crudap/src/main/java/com/crudapi/crud/enums/entityEnums/OrderStatus.java
+===================================================================
+diff --git a/crudap/src/main/java/com/crudapi/crud/enums/entityEnums/OrderStatus.java b/crudap/src/main/java/com/crudapi/crud/enums/entityEnums/OrderStatus.java
+deleted file mode 100644
+--- a/crudap/src/main/java/com/crudapi/crud/enums/entityEnums/OrderStatus.java	(revision 65a46375df718040e3a112e9f3905182847a8853)
++++ /dev/null	(revision 65a46375df718040e3a112e9f3905182847a8853)
+@@ -1,16 +0,0 @@
+-package com.crudapi.crud.enums.entityEnums;
+-
+-import lombok.AllArgsConstructor;
+-import lombok.Getter;
+-
+-@AllArgsConstructor
+-@Getter
+-public enum OrderStatus {
+-
+-    NEW("Новый заказ"),
+-    PROCESSING("Выполняется"),
+-    COMPLETED("Выполнен"),
+-    CANCELLED("Отменен");
+-
+-    private final String russianDescription;
+-}
+Index: crudap/src/main/java/com/crudapi/crud/dto/ProductChangeEvent.java
+===================================================================
+diff --git a/crudap/src/main/java/com/crudapi/crud/dto/ProductChangeEvent.java b/crudap/src/main/java/com/crudapi/crud/dto/ProductChangeEvent.java
+deleted file mode 100644
+--- a/crudap/src/main/java/com/crudapi/crud/dto/ProductChangeEvent.java	(revision 65a46375df718040e3a112e9f3905182847a8853)
++++ /dev/null	(revision 65a46375df718040e3a112e9f3905182847a8853)
+@@ -1,15 +0,0 @@
+-package com.crudapi.crud.dto;
+-
+-import lombok.AllArgsConstructor;
+-import lombok.Data;
+-import lombok.NoArgsConstructor;
+-
+-import java.util.List;
+-
+-@Data
+-@NoArgsConstructor
+-@AllArgsConstructor
+-public class ProductChangeEvent {
+-    private Long productId;
+-    private List<String> eventTypes;
+-}
+Index: crudap/src/main/java/com/crudapi/crud/enums/sort/ProductSortField.java
+===================================================================
+diff --git a/crudap/src/main/java/com/crudapi/crud/enums/sort/ProductSortField.java b/crudap/src/main/java/com/crudapi/crud/enums/sort/ProductSortField.java
+deleted file mode 100644
+--- a/crudap/src/main/java/com/crudapi/crud/enums/sort/ProductSortField.java	(revision 65a46375df718040e3a112e9f3905182847a8853)
++++ /dev/null	(revision 65a46375df718040e3a112e9f3905182847a8853)
+@@ -1,17 +0,0 @@
+-package com.crudapi.crud.enums.sort;
+-
+-import lombok.Getter;
+-
+-@Getter
+-public enum ProductSortField {
+-
+-    ID("id"),
+-    NAME("name"),
+-    PRICE("price");
+-
+-    private final String sortBy;
+-
+-    ProductSortField(String sortBy) {
+-        this.sortBy = sortBy;
+-    }
+-}
+Index: crudap/src/main/java/com/crudapi/crud/enums/entityEnums/Role.java
+===================================================================
+diff --git a/crudap/src/main/java/com/crudapi/crud/enums/entityEnums/Role.java b/crudap/src/main/java/com/crudapi/crud/enums/entityEnums/Role.java
+deleted file mode 100644
+--- a/crudap/src/main/java/com/crudapi/crud/enums/entityEnums/Role.java	(revision 65a46375df718040e3a112e9f3905182847a8853)
++++ /dev/null	(revision 65a46375df718040e3a112e9f3905182847a8853)
+@@ -1,14 +0,0 @@
+-package com.crudapi.crud.enums.entityEnums;
+-
+-import lombok.AllArgsConstructor;
+-import lombok.Getter;
+-
+-@AllArgsConstructor
+-@Getter
+-public enum Role {
+-    ADMIN("Administrator", "Администратор"),
+-    MANAGER("Manager", "Менеджер");
+-
+-    private final String englishDescription;
+-    private final String russianDescription;
+-}
+Index: crudap/src/main/java/com/crudapi/crud/enums/sort/SortDirection.java
+===================================================================
+diff --git a/crudap/src/main/java/com/crudapi/crud/enums/sort/SortDirection.java b/crudap/src/main/java/com/crudapi/crud/enums/sort/SortDirection.java
+deleted file mode 100644
+--- a/crudap/src/main/java/com/crudapi/crud/enums/sort/SortDirection.java	(revision 65a46375df718040e3a112e9f3905182847a8853)
++++ /dev/null	(revision 65a46375df718040e3a112e9f3905182847a8853)
+@@ -1,7 +0,0 @@
+-package com.crudapi.crud.enums.sort;
+-
+-public enum SortDirection {
+-
+-    ASC,
+-    DESC
+-}
+Index: platform-contract/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/platform-contract/pom.xml b/platform-contract/pom.xml
+new file mode 100644
+--- /dev/null	(date 1771159465319)
++++ b/platform-contract/pom.xml	(date 1771159465319)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <groupId>com.platform-contract</groupId>
++    <artifactId>platform-contract</artifactId>
++    <version>1.0-SNAPSHOT</version>
++
++    <properties>
++        <maven.compiler.source>21</maven.compiler.source>
++        <maven.compiler.target>21</maven.compiler.target>
++        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++    </properties>
++    
++</project>
+\ No newline at end of file
+Index: crudap/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n    <parent>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-parent</artifactId>\n        <version>3.4.9</version>\n        <relativePath/>\n    </parent>\n    <groupId>com.crudAPI</groupId>\n    <artifactId>CRUD</artifactId>\n    <version>0.0.1-SNAPSHOT</version>\n    <name>CRUD</name>\n    <description>CRUD</description>\n    <properties>\n        <java.version>21</java.version>\n    </properties>\n    <dependencies>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-data-jpa</artifactId>\n        </dependency>\n\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-web</artifactId>\n        </dependency>\n\n        <dependency>\n            <groupId>org.postgresql</groupId>\n            <artifactId>postgresql</artifactId>\n            <scope>runtime</scope>\n        </dependency>\n\n        <dependency>\n            <groupId>org.projectlombok</groupId>\n            <artifactId>lombok</artifactId>\n            <optional>true</optional>\n        </dependency>\n\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-test</artifactId>\n            <scope>test</scope>\n        </dependency>\n\n        <dependency>\n            <groupId>jakarta.validation</groupId>\n            <artifactId>jakarta.validation-api</artifactId>\n            <version>3.0.2</version>\n        </dependency>\n        <dependency>\n            <groupId>org.hibernate.validator</groupId>\n            <artifactId>hibernate-validator</artifactId>\n            <version>8.0.1.Final</version>\n        </dependency>\n        <dependency>\n            <groupId>org.mapstruct</groupId>\n            <artifactId>mapstruct</artifactId>\n            <version>1.5.5.Final</version>\n        </dependency>\n        <dependency>\n            <groupId>org.mapstruct</groupId>\n            <artifactId>mapstruct-processor</artifactId>\n            <version>1.5.5.Final</version>\n            <scope>provided</scope>\n        </dependency>\n\n        <dependency>\n            <groupId>org.flywaydb</groupId>\n            <artifactId>flyway-core</artifactId>\n            <version>9.22.3</version>\n        </dependency>\n\n        <dependency>\n            <groupId>org.testcontainers</groupId>\n            <artifactId>junit-jupiter</artifactId>\n            <scope>test</scope>\n        </dependency>\n        <dependency>\n            <groupId>org.testcontainers</groupId>\n            <artifactId>postgresql</artifactId>\n            <scope>test</scope>\n        </dependency>\n\n        <dependency>\n            <groupId>ch.qos.logback</groupId>\n            <artifactId>logback-classic</artifactId>\n            <version>1.5.18</version>\n        </dependency>\n        <dependency>\n            <groupId>org.slf4j</groupId>\n            <artifactId>slf4j-api</artifactId>\n        </dependency>\n\n        <dependency>\n            <groupId>org.springdoc</groupId>\n            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>\n            <version>2.2.0</version>\n        </dependency>\n\n        <dependency>\n            <groupId>org.springframework.kafka</groupId>\n            <artifactId>spring-kafka</artifactId>\n        </dependency>\n\n        <dependency>\n            <groupId>org.apache.commons</groupId>\n            <artifactId>commons-compress</artifactId>\n            <version>1.26.1</version>\n        </dependency>\n        <dependency>\n            <groupId>org.apache.commons</groupId>\n            <artifactId>commons-lang3</artifactId>\n            <version>3.18.0</version>\n        </dependency>\n    </dependencies>\n\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-compiler-plugin</artifactId>\n                <version>3.11.0</version>\n                <configuration>\n                    <source>21</source>\n                    <target>21</target>\n                    <annotationProcessorPaths>\n                        <path>\n                            <groupId>org.projectlombok</groupId>\n                            <artifactId>lombok</artifactId>\n                            <version>1.18.30</version>\n                        </path>\n                        <path>\n                            <groupId>org.mapstruct</groupId>\n                            <artifactId>mapstruct-processor</artifactId>\n                            <version>1.5.5.Final</version>\n                        </path>\n                    </annotationProcessorPaths>\n                </configuration>\n            </plugin>\n            <plugin>\n                <groupId>org.springframework.boot</groupId>\n                <artifactId>spring-boot-maven-plugin</artifactId>\n                <version>3.4.9</version>\n            </plugin>\n        </plugins>\n    </build>\n</project>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/crudap/pom.xml b/crudap/pom.xml
+--- a/crudap/pom.xml	(revision 65a46375df718040e3a112e9f3905182847a8853)
++++ b/crudap/pom.xml	(date 1771160558359)
+@@ -5,7 +5,7 @@
+     <parent>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-parent</artifactId>
+-        <version>3.4.9</version>
++        <version>4.0.0</version>
+         <relativePath/>
+     </parent>
+     <groupId>com.crudAPI</groupId>
+Index: subscription/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n\txsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\n\t<modelVersion>4.0.0</modelVersion>\n\t<parent>\n\t\t<groupId>org.springframework.boot</groupId>\n\t\t<artifactId>spring-boot-starter-parent</artifactId>\n\t\t<version>3.5.8</version>\n\t\t<relativePath/> <!-- lookup parent from repository -->\n\t</parent>\n\t<groupId>com.subscription</groupId>\n\t<artifactId>subscription</artifactId>\n\t<version>0.0.1-SNAPSHOT</version>\n\t<name>subscription</name>\n\t<description>Demo project for Spring Boot</description>\n\t<url/>\n\t<licenses>\n\t\t<license/>\n\t</licenses>\n\t<developers>\n\t\t<developer/>\n\t</developers>\n\t<scm>\n\t\t<connection/>\n\t\t<developerConnection/>\n\t\t<tag/>\n\t\t<url/>\n\t</scm>\n\t<properties>\n\t\t<java.version>21</java.version>\n\t</properties>\n\t<dependencies>\n\t\t<dependency>\n\t\t\t<groupId>org.springframework.boot</groupId>\n\t\t\t<artifactId>spring-boot-starter-data-jpa</artifactId>\n\t\t</dependency>\n\t\t<dependency>\n\t\t\t<groupId>org.springframework.boot</groupId>\n\t\t\t<artifactId>spring-boot-starter-web</artifactId>\n\t\t</dependency>\n\t\t<dependency>\n            <groupId>org.mapstruct</groupId>\n            <artifactId>mapstruct</artifactId>\n            <version>1.5.5.Final</version>\n        </dependency>\n        <dependency>\n            <groupId>org.mapstruct</groupId>\n            <artifactId>mapstruct-processor</artifactId>\n            <version>1.5.5.Final</version>\n            <scope>provided</scope>\n        </dependency>\n\t\t<dependency>\n\t\t\t<groupId>org.postgresql</groupId>\n\t\t\t<artifactId>postgresql</artifactId>\n\t\t\t<scope>runtime</scope>\n\t\t</dependency>\n\t\t<dependency>\n\t\t\t<groupId>org.projectlombok</groupId>\n\t\t\t<artifactId>lombok</artifactId>\n\t\t\t<optional>true</optional>\n\t\t</dependency>\n\t\t<dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-validation</artifactId>\n        </dependency>\n\t\t<dependency>\n\t\t\t<groupId>jakarta.validation</groupId>\n\t\t\t<artifactId>jakarta.validation-api</artifactId>\n\t\t</dependency>\n\t\t<dependency>\n\t\t\t<groupId>org.springframework.boot</groupId>\n\t\t\t<artifactId>spring-boot-starter-test</artifactId>\n\t\t\t<scope>test</scope>\n\t\t</dependency>\n\n\t\t<dependency>\n\t\t\t<groupId>org.springframework.boot</groupId>\n\t\t\t<artifactId>spring-boot-starter-webflux</artifactId>\n\t\t</dependency>\n\n\t\t<dependency>\n\t\t\t<groupId>org.springframework.kafka</groupId>\n\t\t\t<artifactId>spring-kafka</artifactId>\n\t\t</dependency>\n\n\t\t<dependency>\n            <groupId>org.flywaydb</groupId>\n            <artifactId>flyway-core</artifactId>\n            <version>9.22.3</version>\n        </dependency>\n\t</dependencies>\n\n\t<build>\n\t\t<plugins>\n            <plugin>\n\t\t\t\t<groupId>org.apache.maven.plugins</groupId>\n\t\t\t\t<artifactId>maven-compiler-plugin</artifactId>\n\t\t\t\t<configuration>\n\t\t\t\t\t<annotationProcessorPaths>\n\t\t\t\t\t\t<path>\n\t\t\t\t\t\t\t<groupId>org.projectlombok</groupId>\n\t\t\t\t\t\t\t<artifactId>lombok</artifactId>\n\t\t\t\t\t\t</path>\n\t\t\t\t\t\t<path>\n\t\t\t\t\t\t\t<groupId>org.mapstruct</groupId>\n\t\t\t\t\t\t\t<artifactId>mapstruct-processor</artifactId>\n\t\t\t\t\t\t\t<version>1.5.5.Final</version>\n\t\t\t\t\t\t</path>\n\t\t\t\t\t</annotationProcessorPaths>\n\t\t\t\t</configuration>\n\t\t\t</plugin>\n\t\t\t<plugin>\n\t\t\t\t<groupId>org.springframework.boot</groupId>\n\t\t\t\t<artifactId>spring-boot-maven-plugin</artifactId>\n\t\t\t\t<configuration>\n\t\t\t\t\t<excludes>\n\t\t\t\t\t\t<exclude>\n\t\t\t\t\t\t\t<groupId>org.projectlombok</groupId>\n\t\t\t\t\t\t\t<artifactId>lombok</artifactId>\n\t\t\t\t\t\t</exclude>\n\t\t\t\t\t</excludes>\n\t\t\t\t</configuration>\n\t\t\t</plugin>\n\t\t</plugins>\n\t</build>\n\n</project>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/subscription/pom.xml b/subscription/pom.xml
+--- a/subscription/pom.xml	(revision 65a46375df718040e3a112e9f3905182847a8853)
++++ b/subscription/pom.xml	(date 1771160540291)
+@@ -5,7 +5,7 @@
+ 	<parent>
+ 		<groupId>org.springframework.boot</groupId>
+ 		<artifactId>spring-boot-starter-parent</artifactId>
+-		<version>3.5.8</version>
++		<version>4.0.0</version>
+ 		<relativePath/> <!-- lookup parent from repository -->
+ 	</parent>
+ 	<groupId>com.subscription</groupId>
+diff --git a/subscription/src/main/java/com/sub/subscription/dto/event/ProductChangeEvent.java b/platform-contract/src/main/java/com/contracts/common/events/ProductChangeEvent.java
+rename from subscription/src/main/java/com/sub/subscription/dto/event/ProductChangeEvent.java
+rename to platform-contract/src/main/java/com/contracts/common/events/ProductChangeEvent.java
+diff --git a/crudap/src/main/java/com/crudapi/crud/dto/client/ClientDeletedEvent.java b/platform-contract/src/main/java/com/contracts/common/events/ClientDeletedEvent.java
+rename from crudap/src/main/java/com/crudapi/crud/dto/client/ClientDeletedEvent.java
+rename to platform-contract/src/main/java/com/contracts/common/events/ClientDeletedEvent.java
