@@ -1,7 +1,7 @@
 package com.crudapi.crud.dto.product;
 
-import com.crudapi.crud.enums.sort.ProductSortField;
-import com.crudapi.crud.enums.sort.SortDirection;
+import com.common.common.enums.sort.ProductSortField;
+import com.common.common.enums.sort.SortDirection;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

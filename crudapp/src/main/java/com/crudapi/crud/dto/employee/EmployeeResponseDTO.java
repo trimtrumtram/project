@@ -1,6 +1,6 @@
 package com.crudapi.crud.dto.employee;
 
-import com.crudapi.crud.enums.entityEnums.Role;
+import com.common.common.enums.entityEnums.Role;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

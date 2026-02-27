@@ -1,12 +1,12 @@
 package com.crudapi.crud.service;
 
 import com.crudapi.crud.dto.employee.CreateEmployeeDTO;
-import com.crudapi.crud.enums.sort.EmployeeSortField;
+import com.common.common.enums.sort.EmployeeSortField;
 import com.crudapi.crud.exceptions.EmailAlreadyExistsException;
 import com.crudapi.crud.exceptions.NotFoundException;
 import com.crudapi.crud.mapper.entityMapper.EmployeeMapper;
 import com.crudapi.crud.specification.EmployeeSpecification;
-import com.crudapi.crud.enums.sort.SortDirection;
+import com.common.common.enums.sort.SortDirection;
 import com.crudapi.crud.dto.employee.EmployeeFilterDTO;
 import com.crudapi.crud.dto.employee.EmployeeResponseDTO;
 import com.crudapi.crud.dto.employee.UpdateEmployeeDTO;

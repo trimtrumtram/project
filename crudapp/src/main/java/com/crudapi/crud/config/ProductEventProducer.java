@@ -3,7 +3,7 @@ package com.crudapi.crud.config;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import com.crudapi.crud.dto.ProductChangeEvent;
+import com.common.common.events.ProductChangeEvent;
 
 import lombok.RequiredArgsConstructor;
 

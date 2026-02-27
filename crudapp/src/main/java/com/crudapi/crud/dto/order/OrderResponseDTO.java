@@ -1,7 +1,7 @@
 package com.crudapi.crud.dto.order;
 
 import com.crudapi.crud.dto.product.ProductResponseDTO;
-import com.crudapi.crud.enums.entityEnums.OrderStatus;
+import com.common.common.enums.entityEnums.OrderStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

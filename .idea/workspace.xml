@@ -4,7 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1633bdf2-6e99-4d4b-a557-71a6fef5618c" name="Changes" comment="." />
+    <list default="true" id="1633bdf2-6e99-4d4b-a557-71a6fef5618c" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/common/common/CommonApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crudap/crudapp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/config/ProductEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/config/ProductEventProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/CreateEmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/CreateEmployeeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/EmployeeFilterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/EmployeeFilterDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/EmployeeResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/EmployeeResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/UpdateEmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/UpdateEmployeeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/CreateOrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/CreateOrderDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/OrderFilterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/OrderFilterDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/OrderResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/OrderResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/UpdateOrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/UpdateOrderDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/product/ProductFilterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/product/ProductFilterDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/mapper/filterMapper/EmployeeFilterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/mapper/filterMapper/EmployeeFilterMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/mapper/filterMapper/OrderFilterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/mapper/filterMapper/OrderFilterMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/service/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/notification/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subscription/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/subscription/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,48 +88,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.docker-compose.yml.crud-app: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.CRUD [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.CRUD [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.crudap [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.crudap [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.crudap [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.notification [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.notification [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.notification [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.subscription [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.subscription [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.subscription [package].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.CrudApplication.executor&quot;: &quot;Run&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/trimtrumtram/IdeaProjects/project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/trimtrumtram/IdeaProjects/project/platform-contracts/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.docker-compose.yml.crud-app: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "Maven.CRUD [clean].executor": "Run",
+    "Maven.CRUD [package].executor": "Run",
+    "Maven.common [install].executor": "Run",
+    "Maven.crudap [clean].executor": "Run",
+    "Maven.crudap [install].executor": "Run",
+    "Maven.crudap [package].executor": "Run",
+    "Maven.crudapp [install].executor": "Run",
+    "Maven.notification [clean].executor": "Run",
+    "Maven.notification [install].executor": "Run",
+    "Maven.notification [package].executor": "Run",
+    "Maven.project-parent [clean].executor": "Run",
+    "Maven.project-parent [install].executor": "Run",
+    "Maven.subscription [clean].executor": "Run",
+    "Maven.subscription [install].executor": "Run",
+    "Maven.subscription [package].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.CrudApplication.executor": "Run",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/trimtrumtram/IdeaProjects/project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/home/trimtrumtram/IdeaProjects/project/platform-contracts/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/common/src/main/java/enums" />
@@ -109,6 +142,9 @@
       <recent name="$PROJECT_DIR$/common/src/main/java/enums/entityEnums" />
       <recent name="$PROJECT_DIR$/common/src/main/java/events" />
       <recent name="$PROJECT_DIR$/common/src/main/java" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -235,6 +271,7 @@
       <workItem from="1771955954022" duration="5103000" />
       <workItem from="1772178127890" duration="608000" />
       <workItem from="1772187372442" duration="4181000" />
+      <workItem from="1772206378857" duration="1127000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />

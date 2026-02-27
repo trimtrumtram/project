@@ -1,6 +1,6 @@
 package com.crudapi.crud.model;
 
-import com.crudapi.crud.enums.entityEnums.Role;
+import com.common.common.enums.entityEnums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

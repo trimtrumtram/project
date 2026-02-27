@@ -1,7 +1,7 @@
 package com.crudapi.crud.controller;
 
-import com.crudapi.crud.enums.sort.SortDirection;
-import com.crudapi.crud.enums.sort.EmployeeSortField;
+import com.common.common.enums.sort.SortDirection;
+import com.common.common.enums.sort.EmployeeSortField;
 import com.crudapi.crud.dto.employee.CreateEmployeeDTO;
 import com.crudapi.crud.dto.employee.EmployeeFilterDTO;
 import com.crudapi.crud.dto.employee.EmployeeResponseDTO;

@@ -1,7 +1,7 @@
 package com.crudapi.crud.service;
 
 import com.crudapi.crud.config.ClientEventProducer;
-import com.common.common.events.;
+import com.common.common.events.ClientDeletedEvent;
 import com.crudapi.crud.dto.client.ClientResponseDTO;
 import com.crudapi.crud.dto.client.CreateClientDTO;
 import com.crudapi.crud.dto.client.UpdateClientDTO;

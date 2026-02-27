@@ -1,8 +1,8 @@
 package com.crudapi.crud.dto.order;
 
-import com.crudapi.crud.enums.sort.OrderSortField;
-import com.crudapi.crud.enums.entityEnums.OrderStatus;
-import com.crudapi.crud.enums.sort.SortDirection;
+import com.common.common.enums.sort.OrderSortField;
+import com.common.common.enums.entityEnums.OrderStatus;
+import com.common.common.enums.sort.SortDirection;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
