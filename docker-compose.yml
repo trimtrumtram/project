@@ -3,11 +3,11 @@ version: '3.8'
 services:
   crud-app:
     build:
-      context: ./crudap
+      context: ./crudapp
       dockerfile: Dockerfile
     container_name: crud-app
     env_file:
-      - ./crudap/.env
+      - ./crudapp/.env
     ports:
       - "8080:8080"
     environment:

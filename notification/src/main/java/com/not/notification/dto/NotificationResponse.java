@@ -2,8 +2,8 @@ package com.not.notification.dto;
 
 import java.time.LocalDateTime;
 
-import com.not.notification.model.NotificationStatus;
-import com.not.notification.model.NotificationType;
+import com.common.common.enums.notification.NotificationType;
+import com.common.common.enums.notification.NotificationStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

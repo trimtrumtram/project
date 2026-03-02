@@ -5,31 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1633bdf2-6e99-4d4b-a557-71a6fef5618c" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/common/common/CommonApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crudap/crudapp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/common-1.0.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/common/target/common-1.0.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/common-1.0.0-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudap/crudapp.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/crudapp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/config/ProductEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/config/ProductEventProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/controller/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/CreateEmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/CreateEmployeeDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/EmployeeFilterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/EmployeeFilterDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/EmployeeResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/EmployeeResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/UpdateEmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/employee/UpdateEmployeeDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/CreateOrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/CreateOrderDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/OrderFilterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/OrderFilterDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/OrderResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/OrderResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/UpdateOrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/order/UpdateOrderDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/product/ProductFilterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/dto/product/ProductFilterDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/mapper/filterMapper/EmployeeFilterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/mapper/filterMapper/EmployeeFilterMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/mapper/filterMapper/OrderFilterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/mapper/filterMapper/OrderFilterMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/model/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/service/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/mapper/filterMapper/ProductFilterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/main/java/com/crudapi/crud/mapper/filterMapper/ProductFilterMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crudapp/src/test/java/com/crudapi/crud/controller/EmployeeControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/crudapp/src/test/java/com/crudapi/crud/controller/EmployeeControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notification/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/notification/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification/src/main/java/com/not/notification/NotificationConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification/src/main/java/com/not/notification/NotificationConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification/src/main/java/com/not/notification/dto/NotificationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification/src/main/java/com/not/notification/dto/NotificationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification/src/main/java/com/not/notification/dto/NotificationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification/src/main/java/com/not/notification/dto/NotificationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification/src/main/java/com/not/notification/model/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification/src/main/java/com/not/notification/model/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification/src/main/java/com/not/notification/service/NotificationSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification/src/main/java/com/not/notification/service/NotificationSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification/src/main/java/com/not/notification/service/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification/src/main/java/com/not/notification/service/NotificationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/subscription/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/subscription/pom.xml" afterDir="false" />
     </list>
@@ -39,7 +29,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="148" />
+    <option name="cachedIndexableFilesCount" value="155" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -94,10 +84,12 @@
     "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
     "Maven.CRUD [clean].executor": "Run",
     "Maven.CRUD [package].executor": "Run",
+    "Maven.common [clean].executor": "Run",
     "Maven.common [install].executor": "Run",
     "Maven.crudap [clean].executor": "Run",
     "Maven.crudap [install].executor": "Run",
     "Maven.crudap [package].executor": "Run",
+    "Maven.crudapp [clean].executor": "Run",
     "Maven.crudapp [install].executor": "Run",
     "Maven.notification [clean].executor": "Run",
     "Maven.notification [install].executor": "Run",
@@ -271,7 +263,9 @@
       <workItem from="1771955954022" duration="5103000" />
       <workItem from="1772178127890" duration="608000" />
       <workItem from="1772187372442" duration="4181000" />
-      <workItem from="1772206378857" duration="1127000" />
+      <workItem from="1772206378857" duration="1401000" />
+      <workItem from="1772272901807" duration="4000" />
+      <workItem from="1772465610384" duration="1827000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -305,7 +299,31 @@
       <option name="project" value="LOCAL" />
       <updated>1771953044616</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary=".">
+      <option name="closed" value="true" />
+      <created>1772207553527</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1772207553527</updated>
+    </task>
+    <task id="LOCAL-00006" summary=".">
+      <option name="closed" value="true" />
+      <created>1772207586047</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1772207586047</updated>
+    </task>
+    <task id="LOCAL-00007" summary=".">
+      <option name="closed" value="true" />
+      <created>1772207598323</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1772207598323</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

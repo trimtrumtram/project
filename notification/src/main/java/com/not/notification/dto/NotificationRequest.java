@@ -1,6 +1,6 @@
 package com.not.notification.dto;
 
-import com.not.notification.model.NotificationType;
+import com.common.common.enums.notification.NotificationType;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
